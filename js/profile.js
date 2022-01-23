@@ -52,16 +52,3 @@ img.src = `/images/${todayImage}`;
 
 messageArea.innerText = todayMessage;
 imageArea.appendChild(img);
-
-
-/*
-
-
-const choosenImge = images[Math.floor(Math.random() * images.length)];
-
-const bgImage = document.createElement("img");
-
-bgImage.src = `images/${choosenImge}`;
-
-document.body.appendChild(bgImage);
-*/

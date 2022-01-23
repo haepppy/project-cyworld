@@ -41,7 +41,6 @@ function handleColorClick(e) {
   btn.forEach(target =>{
     const value = target.classList.contains("clicked-btn");
     if(value) {
-      console.log(value);
       haveOn = true;
     };
   })

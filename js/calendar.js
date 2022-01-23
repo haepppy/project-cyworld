@@ -25,25 +25,6 @@ const ORIGINAL_TITLE = "𝐶𝑎𝑙𝑒𝑛𝑑𝑎𝑟 𝑤𝑖𝑡ℎ 𝑇�
 
 showCalendar(thisMonth, thisYear);
 
-//////month select
-/*
-const monthAndYear = document.querySelector("#monthAndYear");
-const selectMonth = document.querySelector(".seletMonth");
-
-showCalendar(thisMonth, thisYear);
-
-selectMonth.addEventListener("change", function(e) {
-    const value = e.target.value;
-    const yearMonArr = value.split("-");
-    const selectedYear = Number(yearMonArr[0]);
-    const selectedMonth = Number(yearMonArr[1]-1);
-    thisMonth = selectedMonth;
-    thisYear = selectedYear;
-    showCalendar(selectedMonth, selectedYear);
-})
-*/
-   
-   
 //////calendar
 function next(e) {
     console.dir(e)
@@ -181,7 +162,6 @@ preMonthBtn.addEventListener("click", previous);
 nextMonthBtn.addEventListener("click", next);
 
 
-//////////////////////////////////////////////////////////////////
 /* to do list */
 
 
@@ -314,7 +294,7 @@ function clickDateShowToDo() {
     };
 }
 
-//////////////////////////////////////////////
+
 /* delete all btn */
 
 const deleteAllBtn = document.querySelector("#delete-all");
@@ -329,7 +309,6 @@ function deleteAll() {
 deleteAllBtn.addEventListener("click", deleteAll);
 
 
-////////////////////////////////////////////////
 /* edit event */
 
 let changedObj;
@@ -379,29 +358,6 @@ function paintEditInput(e) {
 
     form.appendChild(textArea);
     thisLi.appendChild(form);
-
-    /*
-    const thisLi = e.target.offsetParent;
-    const thisSpan = thisLi.children[1].lastChild;
-    const form = document.createElement("form");
-    const input = document.createElement("input");
-
-    form.id = 'changeList';
-    form.addEventListener("submit", editSubmit);
-
-    input.type = "text";
-    input.value = String(thisSpan.innerText);
-    input.autofocus = 'true';
-    input.className = "change-input";
-    thisSpan.innerHTML = "";
-
-    const thisId = parseInt(thisLi.id);
-    const index = toDos.findIndex(i => i.id === thisId);
-    changedObj = toDos[index];
-
-    form.appendChild(input);
-    thisLi.appendChild(form);
-    */
 }
 
 function editSubmit(e) {
@@ -410,7 +366,7 @@ function editSubmit(e) {
     const inputValue = e.target.lastChild.value;
     const span = e.path[1].children[1].lastChild;
 
-    changedObj.text = inputValue; //배열 내용 업데이트
+    changedObj.text = inputValue;
     span.innerText = String(inputValue);
 
     e.target.remove();
@@ -427,179 +383,3 @@ function editClickSubmit(e) {
     e.target.parentElement.lastChild.remove();
     saveToDos();
 }
-
-/*
-//옆으로 밀기 이벤트 - touch
-let startX = 0;
-let startY = 0;
-let endX = 0;
-let endY = 0;
-
-let moveType = -1;
-let hSlope = ((window.innerHeight / 2) / window.innerWidth).toFixed(2) * 0.3;
-
-
-function getMoveType(x, y) {
-    moveType = -1;
-    let nDis = x + y;
-    if(nDis < 30) {return moveType};
-
-    let slope = Math.abs(parseFloat((y / x).toFixed(2), 10)); 
-
-    if(slope > hSlope) {
-        moveType = 1;
-    } else {
-        moveType = 0;
-    }
-
-    return moveType;
-}
-
-function touchStart(e) {
-    startX = e.changedTouches[0].pageX;
-    startY = e.changedTouches[0].pageY;
-};
-
-function touchEnd (e) {
-    endX = e.changedTouches[0].pageX;
-    endY = e.changedTouches[0].pageY;
-    touchMove(e);
-};
-
-function touchMove(e) {
-    let moveX = startX - endX;
-    let moveY = startY - endY;
-    moveType = getMoveType(moveX, moveY);
-
-    const target = e.target.tagName;
-    if (target == 'SPAN' && moveType === 0) {
-        e.target.classList.add(HIDDEN_STYLE);
-        promptFunc(e);
-    };
-};
-   
-toDoList.addEventListener("touchstart", touchStart, false);
-toDoList.addEventListener("touchend", touchEnd, false);
-
-
-//////custom popup page
-const mainTitleArea = document.querySelector(".header--text-area");
-const mainTitle = document.querySelector(".header--text-area h1");
-const popupPage = document.querySelector(".custom-popup-page")
-const editTitleForm = document.querySelector("#editTitleForm");
-const editTitleInput = document.querySelector("#editTitle");
-const colorBox = document.querySelectorAll(".colorBox");
-const reSelectBtn = document.querySelector("#reSelectBtn");
-
-const MAIN_COLOR = "--main-color";
-const SUB_COLOR = "--sub-color";
-const TITLE = "title";
-
-let savedMainColor = localStorage.getItem(MAIN_COLOR);
-let savedSubColor = localStorage.getItem(SUB_COLOR);
-const savedTitle = localStorage.getItem(TITLE);
-
-let haveMainColor = false;
-let haveSubColor = false;
-let mainColor;
-let subColor;
-
-
-function handlePopupClick() {
-    popupPage.classList.toggle(HIDDEN_STYLE);
-    editTitleInput.value = mainTitle.innerText;
-};
-
-function handleColorClick(e) {
-    if (!haveMainColor && !haveSubColor) {
-        getMainColor(e);
-    } else if (haveMainColor && !haveSubColor) {
-        getSubColor(e);
-    };
-};
-
-function getMainColor(e) {
-    haveMainColor = true;
-    haveSubColor = false;
-
-    const target = e.target;
-    target.classList.add("clickedColor");
-    mainColor = target.style.backgroundColor;
-    document.documentElement.style.setProperty(MAIN_COLOR, mainColor);
-    return mainColor;
-};
-
-function getSubColor(e) {
-    haveMainColor = true;
-    haveSubColor = true;
-    
-    const target = e.target;
-    target.classList.add("clickedColor");
-    subColor = target.style.backgroundColor;
-    document.documentElement.style.setProperty(SUB_COLOR, subColor);
-    return subColor
-};
-
-function clearClickedColor() {
-    colorBox.forEach(target => {
-        target.classList.remove("clickedColor");
-    })
-    haveMainColor = false;
-    haveSubColor = false;
-}
-
-function handleCustomSub(e) {
-    e.preventDefault();
-    const value = e.target[1].value;
-    
-    if(value) {
-        localStorage.setItem(TITLE, value);
-        mainTitle.innerText = value;
-    }else {
-        localStorage.setItem(TITLE, ORIGINAL_TITLE);
-        mainTitle.innerText = ORIGINAL_TITLE;
-    }
-
-    if(mainColor) {
-        localStorage.setItem(MAIN_COLOR, mainColor);
-    };
-
-    if(subColor) {
-        localStorage.setItem(SUB_COLOR, subColor);
-    };
-    
-    popupPage.classList.toggle(HIDDEN_STYLE);
-    clearClickedColor()
-};
-
-
-if(localStorage.getItem(TITLE)) {
-    mainTitle.innerText = localStorage.getItem(TITLE);
-};
-
-if(!savedMainColor) {
-    localStorage.setItem(MAIN_COLOR, "#654ea3");
-    localStorage.setItem(SUB_COLOR, "#eaafc8");    
-}else {
-    document.documentElement.style.setProperty(MAIN_COLOR, savedMainColor);
-    document.documentElement.style.setProperty(SUB_COLOR, savedSubColor);
-}
-
-
-mainTitleArea.addEventListener("click", handlePopupClick);
-
-colorBox.forEach(target => {
-    target.addEventListener("click", handleColorClick, {
-        captue: true
-    });
-});
-reSelectBtn.addEventListener("click", clearClickedColor);
-editTitleForm.addEventListener("submit", handleCustomSub);
-editTitleForm.addEventListener("keydown", function(e) {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-    };
-}, true);
-*/
-
-//////
