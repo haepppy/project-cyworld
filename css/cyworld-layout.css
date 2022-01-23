@@ -1,0 +1,659 @@
+@import url(reser.css);
+@font-face {
+  font-family: 'PFStardust';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/PFStardust.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@keyframes flow-text {
+  0% {
+    transform: translateX(0%); }
+  10% {
+    transform: translateX(0%); }
+  55% {
+    transform: translateX(-100%); }
+  55.01% {
+    transform: translateX(100%); }
+  100% {
+    transform: translateX(0%); } }
+@keyframes rotate-cd {
+  form {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+.flow-animation {
+  animation: flow-text 12s linear infinite; }
+
+:root {
+  --main-color: #b3d0dd;
+  --sub-color: #4889b5; }
+
+.today-bg {
+  background: var(--sub-color) !important;
+  color: #fff !important; }
+
+.clicked-bg {
+  background: var(--main-color);
+  color: #fff !important; }
+
+.haveTodo {
+  font-weight: bold; }
+
+.sun-red {
+  color: #FE6F6F; }
+
+.sat-blue {
+  color: #707DF8; }
+
+.hidden {
+  display: none !important; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body.default {
+  background: linear-gradient(to bottom, transparent 19px, #8b8b8b 19px) 0 0/100vw 20px repeat-y, linear-gradient(to right, transparent 19px, #8b8b8b 19px) 0 0/20px 100vh repeat-x #a4a4a4; }
+
+#wrap {
+  width: 90%;
+  height: 100vh;
+  min-width: 1200px;
+  min-height: 750px;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; }
+
+div {
+  border-radius: 2px; }
+  div.container {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-column-gap: 20px;
+    width: 100%;
+    height: 90%;
+    position: relative; }
+    div.container .main-layout {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 3fr; }
+      div.container .main-layout .left-side {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        padding-right: 0px;
+        position: relative;
+        background-color: var(--main-color);
+        border-radius: 6px 10px 10px 6px;
+        border: 2px solid #748285;
+        border-right: none; }
+        div.container .main-layout .left-side .sub-area {
+          border-radius: 6px 10px 10px 6px;
+          padding: 40px 5px 10px 10px; }
+        div.container .main-layout .left-side .ring-area {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 30px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: -15px;
+          padding: 180px 0 140px;
+          z-index: 3; }
+          div.container .main-layout .left-side .ring-area .ring-box {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; }
+          div.container .main-layout .left-side .ring-area .ring {
+            width: 30px;
+            height: 10px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background: linear-gradient(to right, white, #c3c3c3); }
+      div.container .main-layout .right-side {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        padding-left: 0px;
+        position: relative;
+        background-color: var(--main-color);
+        border-radius: 10px 6px 6px 10px;
+        border: 2px solid #748285;
+        border-left: none; }
+        div.container .main-layout .right-side .sub-area {
+          border-radius: 10px 6px 6px 10px;
+          padding: 40px 10px 10px 5px;
+          position: relative; }
+          div.container .main-layout .right-side .sub-area .title {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            font-size: 16px; }
+        div.container .main-layout .right-side .right-side-tab-area {
+          position: absolute;
+          top: 70px;
+          right: -40px;
+          width: 50px;
+          height: 30px;
+          background-color: #ccc; }
+          div.container .main-layout .right-side .right-side-tab-area .tab {
+            width: 100%;
+            height: 30px;
+            color: white;
+            border: 1px solid #2c2c2c;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 5px;
+            background-color: var(--sub-color);
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            cursor: pointer; }
+          div.container .main-layout .right-side .right-side-tab-area .tab-on {
+            background-color: #fff;
+            color: #2c2c2c;
+            position: relative;
+            z-index: 3; }
+            div.container .main-layout .right-side .right-side-tab-area .tab-on::after {
+              content: "";
+              width: 2px;
+              height: 100%;
+              background-color: #fff;
+              position: absolute;
+              top: 0;
+              left: -2px; }
+        div.container .main-layout .right-side .main-area {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: 1fr 2fr;
+          grid-gap: 10px;
+          position: relative;
+          box-shadow: 3px 0 3px 0 rgba(0, 0, 0, 0.15);
+          z-index: 2; }
+        div.container .main-layout .right-side .clock-area {
+          padding: 20px; }
+          div.container .main-layout .right-side .clock-area .clock-box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ccc;
+            border-right: none;
+            border-left: none; }
+          div.container .main-layout .right-side .clock-area h2#clock {
+            font-size: 40px;
+            text-align: center;
+            color: var(--sub-color); }
+          div.container .main-layout .right-side .clock-area h2#date {
+            font-size: 16px;
+            text-align: center;
+            font-weight: normal; }
+        div.container .main-layout .right-side .calendar-area {
+          padding: 5px 10px; }
+          div.container .main-layout .right-side .calendar-area .inline-box {
+            width: 100%;
+            position: relative;
+            text-align: center; }
+            div.container .main-layout .right-side .calendar-area .inline-box .month-btn {
+              -webkit-appearance: none;
+              appearance: none;
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              font-size: 20px;
+              line-height: 18px;
+              text-align: center;
+              vertical-align: middle;
+              border: none;
+              background: #fff;
+              color: var(--main-color);
+              padding: 0;
+              cursor: pointer; }
+            div.container .main-layout .right-side .calendar-area .inline-box .head-title {
+              display: inline-block;
+              width: 30%;
+              vertical-align: middle;
+              line-height: 18px;
+              margin: 0 20px;
+              font-size: 16px; }
+              div.container .main-layout .right-side .calendar-area .inline-box .head-title span:first-child {
+                margin-right: 5px; }
+          div.container .main-layout .right-side .calendar-area .calendar {
+            width: 100%;
+            position: relative; }
+            div.container .main-layout .right-side .calendar-area .calendar table {
+              vertical-align: middle;
+              text-align: center;
+              border-collapse: separate;
+              margin: 0 auto; }
+              div.container .main-layout .right-side .calendar-area .calendar table .cal-body td {
+                width: 35px;
+                height: 20px;
+                vertical-align: middle;
+                text-align: center;
+                line-height: 1;
+                font-size: 12px;
+                padding-top: 1px;
+                padding-left: 1px;
+                cursor: pointer;
+                border-radius: 2px; }
+        div.container .main-layout .right-side .todo-area {
+          grid-column: span 2;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border-top: 1px solid #ccc; }
+          div.container .main-layout .right-side .todo-area .todo-title {
+            width: 100%;
+            height: 20px;
+            font-size: 14px;
+            color: var(--sub-color); }
+          div.container .main-layout .right-side .todo-area .list-main-area {
+            width: 100%;
+            flex-grow: 1;
+            margin-top: 5px;
+            position: relative; }
+            div.container .main-layout .right-side .todo-area .list-main-area::-webkit-scrollbar {
+              display: none; }
+            div.container .main-layout .right-side .todo-area .list-main-area .bg-left {
+              width: 50%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: #eeeeee;
+              border-radius: 0;
+              border-bottom: 20px solid var(--main-color); }
+            div.container .main-layout .right-side .todo-area .list-main-area .bg-right {
+              width: 50%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              background-color: #d6d6d6;
+              border-radius: 0;
+              border-bottom: 20px solid var(--main-color); }
+            div.container .main-layout .right-side .todo-area .list-main-area .bg-bottom {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: -20px;
+              left: 0;
+              border-top: none;
+              border-right: 373px solid transparent;
+              border-left: 373px solid transparent;
+              border-bottom: 145px solid var(--main-color); }
+          div.container .main-layout .right-side .todo-area ul#todo-list {
+            display: flex;
+            flex-direction: column-reverse;
+            flex-wrap: nowrap;
+            gap: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            overflow-y: auto; }
+            div.container .main-layout .right-side .todo-area ul#todo-list::-webkit-scrollbar {
+              display: none; }
+            div.container .main-layout .right-side .todo-area ul#todo-list li {
+              width: fit-content;
+              list-style: none;
+              padding: 10px 20px;
+              border-radius: 6px;
+              background-color: #fff;
+              font-size: 14px;
+              position: relative;
+              box-shadow: 0 -2px 0 #2c2c2c;
+              margin-right: 42px; }
+              div.container .main-layout .right-side .todo-area ul#todo-list li::after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                bottom: -10px;
+                left: 20px;
+                box-sizing: border-box;
+                border-top: 5px solid #fff;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                border-bottom: none; }
+              div.container .main-layout .right-side .todo-area ul#todo-list li input[type="checkbox"] {
+                display: none; }
+                div.container .main-layout .right-side .todo-area ul#todo-list li input[type="checkbox"] + label span {
+                  cursor: pointer; }
+                div.container .main-layout .right-side .todo-area ul#todo-list li input[type="checkbox"]:checked + label span {
+                  color: #ccc; }
+              div.container .main-layout .right-side .todo-area ul#todo-list li button {
+                width: 16px;
+                height: 16px;
+                -webkit-appearance: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 0px;
+                position: absolute;
+                right: -46px;
+                padding: 0; }
+                div.container .main-layout .right-side .todo-area ul#todo-list li button span {
+                  font-size: 16px;
+                  text-shadow: 1px 0 0 rgba(255, 255, 255, 0.6); }
+              div.container .main-layout .right-side .todo-area ul#todo-list li .edit-btn {
+                position: absolute;
+                right: -26px;
+                width: 16px;
+                height: 16px;
+                background-image: url(/images/edit-icon.svg);
+                cursor: pointer; }
+              div.container .main-layout .right-side .todo-area ul#todo-list li .edit-textarea {
+                -webkit-appearance: none;
+                appearance: none;
+                position: absolute;
+                top: 0px;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-family: 'S-CoreDream-3Light';
+                font-size: 14px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 6px;
+                resize: none;
+                color: var(--sub-color); }
+                div.container .main-layout .right-side .todo-area ul#todo-list li .edit-textarea::-webkit-scrollbar {
+                  display: none; }
+                div.container .main-layout .right-side .todo-area ul#todo-list li .edit-textarea:focus {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  border: none;
+                  width: 100%;
+                  height: 100%; }
+          div.container .main-layout .right-side .todo-area .delete-all-area {
+            width: 100%;
+            height: 16px;
+            margin-bottom: 5px;
+            text-align: right; }
+            div.container .main-layout .right-side .todo-area .delete-all-area span {
+              font-size: 12px;
+              cursor: pointer; }
+              div.container .main-layout .right-side .todo-area .delete-all-area span:first-child {
+                font-size: 14px;
+                color: var(--sub-color); }
+          div.container .main-layout .right-side .todo-area #todoForm {
+            width: 100%;
+            height: 50px;
+            padding: 0 10px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8; }
+            div.container .main-layout .right-side .todo-area #todoForm label {
+              font-size: 14px;
+              color: var(--sub-color);
+              font-weight: bold; }
+            div.container .main-layout .right-side .todo-area #todoForm #todoInput {
+              height: 24px;
+              flex-grow: 1;
+              margin: 0 5px 0 10px;
+              padding: 0 4px;
+              outline: none; }
+              div.container .main-layout .right-side .todo-area #todoForm #todoInput:focus::placeholder {
+                color: transparent; }
+              div.container .main-layout .right-side .todo-area #todoForm #todoInput:focus::-moz-placeholder {
+                color: transparent; }
+            div.container .main-layout .right-side .todo-area #todoForm button {
+              padding: 0 4px; }
+  div.sub-area {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0; }
+  div.main-area {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #999;
+    padding: 20px 30px;
+    position: relative; }
+  div.weather-area {
+    width: 100%;
+    height: 26px;
+    border: 1px solid #999;
+    line-height: 24px;
+    padding: 0 10px;
+    vertical-align: middle; }
+    div.weather-area span.weather-title {
+      font-size: 11px;
+      font-weight: bold;
+      margin-right: 5px;
+      color: var(--sub-color); }
+    div.weather-area span#weather {
+      font-weight: normal;
+      font-size: 12px; }
+  div .profile-image {
+    width: 100%;
+    background: #000;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden; }
+    div .profile-image::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%; }
+    div .profile-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; }
+  div .profile-message {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    font-size: 12px; }
+  div .profile {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    padding: 0 30px; }
+    div .profile #login-form {
+      width: 100%; }
+      div .profile #login-form input {
+        width: 100%; }
+        div .profile #login-form input:last-child {
+          color: #fff;
+          border: none;
+          background-color: var(--sub-color); }
+    div .profile #greeting {
+      font-size: 14px;
+      color: var(--sub-color); }
+      div .profile #greeting span {
+        color: #999;
+        font-size: 12px;
+        font-weight: normal; }
+  div.side-area {
+    display: inline-block;
+    width: 100%;
+    height: fit-content;
+    background-color: #fff; }
+    div.side-area .music-player-area {
+      width: 100%;
+      height: 50px;
+      background-color: #ccc;
+      padding: 6px 10px; }
+      div.side-area .music-player-area .music-title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 20px;
+        border: 1px solid #999;
+        background-color: #f1f1f1;
+        padding: 1px 4px;
+        margin-bottom: 4px; }
+        div.side-area .music-player-area .music-title .id-icon {
+          display: block;
+          width: 20px;
+          height: 20px;
+          padding: 2px;
+          z-index: 2; }
+          div.side-area .music-player-area .music-title .id-icon img {
+            display: block;
+            animation: rotate-cd 3s linear infinite; }
+        div.side-area .music-player-area .music-title #musicTitle {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-wrap: nowrap;
+          font-size: 12px;
+          overflow-x: hidden;
+          position: relative; }
+          div.side-area .music-player-area .music-title #musicTitle span {
+            width: max-content;
+            position: absolute;
+            left: 0; }
+      div.side-area .music-player-area .option-area {
+        width: 100%;
+        height: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        div.side-area .music-player-area .option-area .player-btn-area {
+          display: flex;
+          width: fit-content;
+          gap: 4px; }
+          div.side-area .music-player-area .option-area .player-btn-area .palyer-btn {
+            width: 14px;
+            height: 14px;
+            cursor: pointer; }
+            div.side-area .music-player-area .option-area .player-btn-area .palyer-btn img {
+              width: 100%;
+              display: block; }
+        div.side-area .music-player-area .option-area .volume-area {
+          background-color: #999; }
+        div.side-area .music-player-area .option-area .other-btn-area {
+          display: flex;
+          gap: 4px;
+          height: 14px; }
+          div.side-area .music-player-area .option-area .other-btn-area span {
+            height: 14px;
+            font-size: 10px;
+            color: #fff;
+            border-radius: 0;
+            padding: 1px 2px;
+            text-align: center;
+            line-height: 12px; }
+            div.side-area .music-player-area .option-area .other-btn-area span.list {
+              background-color: #505050; }
+            div.side-area .music-player-area .option-area .other-btn-area span.buy {
+              width: 14px;
+              background-color: #a4a4a4; }
+  div #setting {
+    display: block; }
+    div #setting h3 {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: normal; }
+    div #setting .skin-color-area {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin-bottom: 50px; }
+      div #setting .skin-color-area .skin-color {
+        width: 70px;
+        height: 50px;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), 150ms cubic-bezier(0, 0, 0.58, 1); }
+        div #setting .skin-color-area .skin-color::before {
+          content: "";
+          width: 6px;
+          height: 30px;
+          border-radius: 3px;
+          background-color: rgba(255, 255, 255, 0.6);
+          position: absolute;
+          top: 8px;
+          left: 8px; }
+        div #setting .skin-color-area .skin-color::after {
+          content: "";
+          width: 70px;
+          height: 50px;
+          position: absolute;
+          top: 0;
+          left: -2px;
+          border-radius: 10px;
+          box-shadow: 0 0.625em 0 0 rgba(44, 44, 44, 0.15);
+          z-index: -1;
+          transform: translate3d(0, 0.75em, -1em);
+          transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1); }
+        div #setting .skin-color-area .skin-color:active {
+          transform: translate(0em, 0.75em); }
+          div #setting .skin-color-area .skin-color:active::after {
+            transform: translate3d(0, 0, -1em);
+            box-shadow: 0 0 rgba(44, 44, 44, 0.15); }
+        div #setting .skin-color-area .skin-color.clicked-btn {
+          transform: translate(0, 0.35em); }
+          div #setting .skin-color-area .skin-color.clicked-btn::after {
+            transform: translate3d(0, 0.4em, -1em);
+            box-shadow: 0 0.5em 0 0 rgba(44, 44, 44, 0.15); }
+          div #setting .skin-color-area .skin-color.clicked-btn:active {
+            transform: translate(0em, 0.75em); }
+            div #setting .skin-color-area .skin-color.clicked-btn:active::after {
+              transform: translate3d(0, 0, -1em);
+              box-shadow: 0 0 rgba(44, 44, 44, 0.15); }
+        div #setting .skin-color-area .skin-color.pink {
+          background-color: #efd3d3;
+          border: 2px solid #f29191; }
+          div #setting .skin-color-area .skin-color.pink::after {
+            background: #f29191; }
+        div #setting .skin-color-area .skin-color.yellow {
+          background-color: #f1ecad;
+          border: 2px solid #fcd145; }
+          div #setting .skin-color-area .skin-color.yellow::after {
+            background: #fcd145; }
+        div #setting .skin-color-area .skin-color.green {
+          background-color: #bfe5a9;
+          border: 2px solid #77b852; }
+          div #setting .skin-color-area .skin-color.green::after {
+            background: #77b852; }
+        div #setting .skin-color-area .skin-color.blue {
+          background-color: #b3d0dd;
+          border: 2px solid #4889b5; }
+          div #setting .skin-color-area .skin-color.blue::after {
+            background: #4889b5; }
+        div #setting .skin-color-area .skin-color.violet {
+          background-color: #d4bde1;
+          border: 2px solid #9f63c6; }
+          div #setting .skin-color-area .skin-color.violet::after {
+            background: #9f63c6; }
+        div #setting .skin-color-area .skin-color.black {
+          background-color: #B4B4B4;
+          border: 2px solid #353535; }
+          div #setting .skin-color-area .skin-color.black::after {
+            background: #353535; }
+    div #setting #editTitleForm {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 10px; }
+      div #setting #editTitleForm input {
+        padding: 2px 6px; }
+        div #setting #editTitleForm input:last-child:active {
+          transform: scale(0.98); }
+
+/*# sourceMappingURL=cyworld-layout.css.map */

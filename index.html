@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cyworld-layout.css">
+    <title>project - cyworld</title>
+</head>
+<body class="default">
+    <div id="wrap">
+        <div class="container">
+            <div class="main-layout">
+                <div class="left-side">
+                    <div class="sub-area">
+                        <div class="main-area">
+                            <div class="weather-area">
+                                <span class="weather-title">TODAY IS..</span>
+                                <span id="weather"><span></span></span>
+                            </div>
+
+                            <div class="profile-image"></div>
+                            <div class="profile-message">
+                                <span></span>
+                            </div>
+
+                            <div class="profile">
+                                <form id="login-form" class="hidden">
+                                    <input   
+                                    required 
+                                    maxlength="15" 
+                                    type="text" 
+                                    placeholder="이름을 입력해주세요!" />
+                    
+                                    <input type="submit" value="Log In" />
+                                </form>
+                    
+                                <h1 id="greeting" class="hidden"></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ring-area">
+                        <div class="ring-box">
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                        </div>
+
+                        <div class="ring-box">
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="right-side">
+                    <div class="sub-area">
+                        <h2 class="title">나의 미니홈피♬</h2>
+                        <div id="home" class="main-area">
+                            <div class="clock-area">
+                                <div class="clock-box">
+                                    <h2 id="clock">00:00</h2>
+                                    <h2 id="date"></h2>
+                                </div>
+                                
+                            </div>
+
+                            <div class="calendar-area">
+                                <div class="inline-box">
+                                    <button id="previous" class="month-btn">◂</button>
+                                    <h3 id="monthAndYear" class="head-title"></h3>
+                                    <button id="next" class="month-btn">▸</button>
+                                </div>
+
+                                <div class="calendar">
+                                    <table>
+                                        <tbody class="cal-body"></tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+
+                            <div class="todo-area">
+                                
+                                <div class="list-main-area">
+                                    <div class="bg-area">
+                                        <div class="bg-left"></div>
+                                        <div class="bg-right"></div>
+                                        <div class="bg-bottom"></div>
+                                    </div>
+                                    <ul id="todo-list">
+                                         
+                                    </ul>
+                                </div>
+                                <div class="delete-all-area">
+                                    <span>▸</span><span id="delete-all">전체삭제</span>
+                                </div>
+                                <form id="todoForm">
+                                    <label for="todoInput">일촌평</label>
+                                    <input autocomplete="off" type="text" id="todoInput" placeholder="오늘 할 일들을 적어주세요~!"/>
+                                    <button type="submit">확인</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div id="setting" class="main-area hidden">
+                            <h3>Custom Skin Colors</h3>
+                            <div class="skin-color-area">
+                                <div class="skin-color pink"></div>
+                                <div class="skin-color yellow"></div>
+                                <div class="skin-color green"></div>
+                                <div class="skin-color blue"></div>
+                                <div class="skin-color violet"></div>
+                                <div class="skin-color black"></div>
+                            </div>
+
+                            <h3>Edit Title</h3>
+                            <form id="editTitleForm">
+                                <input type="text" id="editTitle" />
+                                <input type="submit" value="변경하기" />
+                            </form>
+                        </div>
+
+                        <div class="right-side-tab-area">
+                            <div 
+                           id="homeTab" class="tab tab-on">홈</div>
+                            <div id="settingTab" class="tab">관리</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <div class="side-area">
+                <div class="music-player-area">
+                    <div class="music-title">
+                        <span class="id-icon"><img src="/images/cd-icon.svg" alt="cd 아이콘"></span>
+                        <span id="musicTitle"><span></span></span>
+                    </div>
+                    <div class="option-area">
+                        <div class="player-btn-area">
+                            <div class="palyer-btn">
+                                <img src="/images/play.svg" alt="뮤직 플레이어 재생 버튼">
+                            </div>
+                            <div class="palyer-btn">
+                                <img src="/images/stop.svg" alt="뮤직 플레이어 멈춤 버튼">
+                            </div>
+                            <div class="palyer-btn">
+                                <img src="/images/previous.svg" alt="뮤직 플레이어 이전 곡 버튼">
+                            </div>
+                            <div class="palyer-btn">
+                                <img src="/images/next.svg" alt="뮤직 플레이어 다음 곡 버튼">
+                            </div>
+                        </div>
+                        <div class="volume-area"></div>
+                        <div class="other-btn-area">
+                            <span class="list">LIST</span>
+                            <span class="buy">↗</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="/js/clock.js"></script>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/setting.js"></script>
+    <script src="/js/weather.js"></script>
+    <script src="/js/greeting.js"></script>
+    <script src="/js/profile.js"></script>
+    <script src="/js/random-music.js"></script>
+</body>
+</html>
