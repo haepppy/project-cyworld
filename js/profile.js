@@ -48,7 +48,7 @@ const todayMessage = profileMessage[Math.floor(Math.random() * profileMessage.le
 const todayImage = images[Math.floor(Math.random() * images.length)];
 
 const img = document.createElement("img");
-img.src = `/images/${todayImage}`;
+img.src = `../images/${todayImage}`;
 
 messageArea.innerText = todayMessage;
 imageArea.appendChild(img);

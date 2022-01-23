@@ -81,9 +81,6 @@ $btn-shadow: rgba(44,44,44,0.15);
 }
 
 
-
-
-
 * {
     margin: 0; padding: 0;
     box-sizing: border-box;
@@ -440,7 +437,7 @@ div {
                                 position: absolute;
                                 right: -26px; 
                                 width: 16px; height: 16px;
-                                background-image: url(/images/edit-icon.svg);
+                                background-image: url(../images/edit-icon.svg);
                                 cursor: pointer;
                             }
 
@@ -824,9 +821,6 @@ div {
             gap: 10px;
             & input {
                 padding: 2px 6px;
-                &:first-child {
-                    
-                }
                 &:last-child:active {
                     transform: scale(0.98);
                 }

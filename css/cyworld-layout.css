@@ -347,7 +347,7 @@ div {
                 right: -26px;
                 width: 16px;
                 height: 16px;
-                background-image: url(/images/edit-icon.svg);
+                background-image: url(../images/edit-icon.svg);
                 cursor: pointer; }
               div.container .main-layout .right-side .todo-area ul#todo-list li .edit-textarea {
                 -webkit-appearance: none;
